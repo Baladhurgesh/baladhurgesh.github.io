@@ -1,0 +1,332 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #1565c0;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    animation: fadeInDown 1s ease;
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 0;
+    animation: fadeInUp 1.5s ease;
+}
+
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+nav {
+    background: #444;
+    color: #fff;
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+nav a {
+    color: #fff;
+    padding: 0 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding-top: 0px;
+}
+
+.main {
+    padding: 30px 0;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.main.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.main h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.main p {
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #666;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.avatar-container {
+    text-align: center;
+}
+
+.avatar {
+    border-radius: 50%;
+    border: 5px solid #1565c0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.network-icon i {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #1565c0;
+    transition: color 0.3s ease;
+}
+
+.network-icon i:hover {
+    color: #0d47a1;
+}
+
+.section-subheading {
+    font-weight: bold;
+    color: #1565c0;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.ul-interests li, .ul-edu li {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.course {
+    font-weight: bold;
+}
+
+.institution {
+    color: #555;
+}
+
+.course-institution {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-page-header {
+    background-color: #1565c0;
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.btn-page-header:hover {
+    background-color: #0d47a1;
+    text-decoration: none;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.section-heading h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #1565c0;
+    text-align: left;
+}
+
+.project-toolbar {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.project-toolbar .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.project-toolbar .btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #1565c0;
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.project-toolbar .btn:hover {
+    background-color: #0d47a1;
+}
+
+.project-toolbar .btn.active {
+    background-color: #0d47a1;
+}
+
+.isotope-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.media.stream-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.media-body {
+    flex: 1;
+    padding-right: 20px;
+    text-align: left;
+}
+
+.ml-3 img {
+    border-radius: 10px;
+}
+
+.stream-meta {
+    margin-top: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.experience-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adds space between each experience item */
+}
+
+.experience-item {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.experience-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.experience-company {
+    font-style: italic;
+    color: #555;
+    margin-right: 10px;
+    flex: 1; /* Allows the company name to take up remaining space */
+    text-align: left;
+}
+
+.experience-duration {
+    color: #888;
+    font-size: 0.9em;
+    text-align: right;
+}
+
+.experience-description ul {
+    padding-left: 20px; /* Adds padding to the list */
+    list-style-type: disc; /* Ensures list items have bullets */
+    margin: 0;
+    text-align: left;
+}
+
+.experience-description li {
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .main p {
+        text-align: center;
+    }
+
+    .avatar-container {
+        text-align: center;
+    }
+
+    .avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .media.stream-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .media-body {
+        padding-right: 0;
+    }
+
+    .ml-3 {
+        margin-top: 10px;
+    }
+}
