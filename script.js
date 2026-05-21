@@ -1,32 +1,37 @@
-// Smooth scrolling for nav links
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
+document.getElementById("y").textContent = new Date().getFullYear();
+
+const updated = document.getElementById("updated");
+if (updated) {
+  const d = new Date(document.lastModified);
+  updated.textContent = d.toLocaleString("en-US", { month: "short", year: "numeric" });
+}
+
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  a.addEventListener("click", (e) => {
+    const id = a.getAttribute("href");
+    if (!id || id === "#") return;
+    const el = document.querySelector(id);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", id);
   });
-  
-  // Dynamically change header and nav background on scroll
-  window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-      header.style.backgroundColor = '#0d47a1';
-      nav.style.backgroundColor = '#333';
-    } else {
-      header.style.backgroundColor = '#1565c0';
-      nav.style.backgroundColor = '#444';
-    }
-  
-    // Reveal sections on scroll
-    document.querySelectorAll('.main').forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-      if (sectionTop < windowHeight - 50) {
-        section.classList.add('visible');
+});
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (!reduceMotion && "IntersectionObserver" in window) {
+  const targets = document.querySelectorAll(".section, .hero");
+  targets.forEach((el) => el.classList.add("reveal"));
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
       }
-    });
-  });
-  
+    },
+    { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
+  );
+  targets.forEach((el) => io.observe(el));
+}

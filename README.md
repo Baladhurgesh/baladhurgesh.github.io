@@ -1,29 +1,28 @@
+# baladhurgesh.github.io
 
-# Portfolio Repo
+Personal site for Bala Dhurgesh. Founding Engineer at Flotive AI.
 
-Welcome to my portfolio repo! This repository contains all the code and resources for my portfolio. All the code is written by ChatGPT.
+Live at https://baladhurgesh.github.io/
 
-## Installation
+## Stack
 
-To get started, follow these steps:
+Plain HTML, CSS, and a few lines of JavaScript. No build step, no framework, no tracking. Inter + JetBrains Mono via Google Fonts.
 
-1. Clone this repository to your local machine.
-2. Install the required dependencies by running `npm install`.
-3. Start the application by running `npm start`.
+## Files
 
-## Usage
+- `index.html` — main page
+- `now.html` — current focus, updated monthly
+- `style.css` — all styles, light + dark via `prefers-color-scheme`
+- `script.js` — footer year and last-updated, smooth anchor scroll
+- `og.svg` — Open Graph preview source (convert to `og.png` for best compatibility)
 
-Here are some instructions on how to use this project:
+## Local preview
 
-1. Open the project in your favorite code editor.
-2. Modify the configuration file to suit your needs.
-3. Run the application and enjoy the amazing features!
-
+```bash
+python3 -m http.server 8080
+# open http://localhost:8080
+```
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-
-## Contact
-
-If you have any questions or suggestions, feel free to reach out to me at [Gmail](mailto:baladhurgeshbp@gmail.com).
+MIT for the code. All content (text, projects, writing) is © Bala Dhurgesh.

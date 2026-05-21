@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Now / Bala Dhurgesh</title>
+
+  <meta name="description" content="What Bala Dhurgesh is currently focused on. Updated monthly." />
+  <meta property="og:title" content="Now / Bala Dhurgesh" />
+  <meta property="og:description" content="What Bala Dhurgesh is currently focused on. Updated monthly." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://baladhurgesh.github.io/now.html" />
+  <meta property="og:image" content="https://baladhurgesh.github.io/og.png" />
+  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c0c0c" media="(prefers-color-scheme: dark)" />
+
+  <link rel="canonical" href="https://baladhurgesh.github.io/now.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e07a3c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Inter,system-ui,sans-serif' font-weight='700' font-size='38' fill='white'%3EB%3C/text%3E%3C/svg%3E" />
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip" href="#top">Skip to content</a>
+  <nav class="topbar" aria-label="Primary">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand">Bala</a>
+      <div class="topbar-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#writing">Writing</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="wrap">
+    <header class="hero">
+      <h1>Now</h1>
+      <p class="role">What I'm focused on right now. Updated monthly.</p>
+      <div class="status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>As of <span id="now-month"></span></span>
+      </div>
+    </header>
+
+    <article class="prose now-prose">
+
+      <!--
+        HOW TO ADD A NEW MONTH:
+        1. Copy the entire <section class="now-entry"> ... </section> block below.
+        2. Paste it ABOVE the current one (newest entry stays on top).
+        3. Update the <h2 class="now-month">, intro paragraph, and bullets.
+        4. That's it. The skeleton (Working on / Reading / Open to) stays.
+      -->
+
+      <section class="now-entry">
+        <h2 class="now-month">May 2026</h2>
+        <p>
+          Heads-down on <a href="https://flotive.ai" target="_blank" rel="noreferrer">Flotive AI</a> (<a href="https://flotive.ai/team.html" target="_blank" rel="noreferrer">team</a>). Mornings on multi-agent architecture for regulatory reasoning, afternoons with permitting teams, evenings rethinking what good interfaces actually look like.
+        </p>
+
+        <h3 class="now-h3">Working on</h3>
+        <ul>
+          <li>Multi-agent architecture for Flotive: planner, retriever, citation-checker, and adjudicator agents that disagree productively before answering.</li>
+          <li>Designing the message passing and shared memory layer so agents stay grounded in the source documents.</li>
+          <li>Eval harness that scores each agent's contribution, not just the final answer.</li>
+        </ul>
+
+        <h3 class="now-h3">Reading</h3>
+        <ul>
+          <li><em>Inspired</em> by Marty Cagan. How to build products people love.</li>
+          <li><em>The World I See</em> by Fei-Fei Li. The arc of computer vision and a research life worth living.</li>
+        </ul>
+
+        <h3 class="now-h3">Exploring</h3>
+        <ul>
+          <li>"No UI is the best UI." Where can agents replace dashboards entirely so the user just states intent and the system handles the rest?</li>
+          <li>How regulated workflows can collapse forms into conversation without losing auditability.</li>
+        </ul>
+
+        <h3 class="now-h3">Recently</h3>
+        <ul>
+          <li>Saw Midori live in concert. Her phrasing on the slow movements changes how I think about pacing.</li>
+          <li>Saw Joshua Bell with orchestra. Reminder that virtuosity without warmth is just noise.</li>
+        </ul>
+      </section>
+
+      <!-- Add new month entries above this line. Older entries stay below. -->
+
+      <p class="now-meta">
+        Inspired by <a href="https://nownownow.com/about" target="_blank" rel="noreferrer">nownownow.com</a>. The idea: a /now page is for what you would tell a friend you haven't seen in a year.
+      </p>
+    </article>
+
+    <footer class="foot">
+      <div>
+        <span class="mono">©</span> <span id="y"></span> Bala Dhurgesh
+      </div>
+      <div class="mono">Last updated <span id="updated"></span></div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    const m = document.getElementById("now-month");
+    if (m) m.textContent = new Date().toLocaleString("en-US", { month: "long", year: "numeric" });
+  </script>
+</body>
+</html>

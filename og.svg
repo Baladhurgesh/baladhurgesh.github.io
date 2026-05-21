@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c0c0c"/>
+      <stop offset="100%" stop-color="#161616"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.18" cy="0.22" r="0.6">
+      <stop offset="0%" stop-color="#e07a3c" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#e07a3c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <g transform="translate(80,90)">
+    <circle cx="10" cy="10" r="7" fill="#e07a3c"/>
+    <text x="32" y="16" font-family="JetBrains Mono, ui-monospace, monospace" font-size="20" fill="#a1a1a1" letter-spacing="-0.01em">bala dhurgesh</text>
+  </g>
+
+  <g transform="translate(80,220)">
+    <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="84" letter-spacing="-0.025em" fill="#ededed">Founding Engineer,</text>
+    <text x="0" y="100" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="84" letter-spacing="-0.025em" fill="#ededed">Flotive AI.</text>
+    <text x="0" y="180" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="28" fill="#a1a1a1" letter-spacing="-0.011em">Agentic regulatory intelligence for permitting.</text>
+  </g>
+
+  <g transform="translate(80,540)">
+    <circle cx="8" cy="8" r="5" fill="#e07a3c"/>
+    <text x="24" y="14" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#a1a1a1">baladhurgesh.github.io</text>
+  </g>
+
+  <g transform="translate(1120,540)" text-anchor="end">
+    <text x="0" y="14" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#6f6f6f">prev. Eternis / Lucid / Blue River</text>
+  </g>
+</svg>
