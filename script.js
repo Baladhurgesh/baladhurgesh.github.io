@@ -1,5 +1,33 @@
 document.getElementById("y").textContent = new Date().getFullYear();
 
+const themeToggle = document.getElementById("theme-toggle");
+if (themeToggle) {
+  const applyTheme = (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.style.colorScheme = theme;
+    themeToggle.setAttribute(
+      "aria-label",
+      theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+    );
+    try {
+      localStorage.setItem("bala-theme", theme);
+    } catch {
+      // private browsing
+    }
+  };
+
+  const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+  themeToggle.setAttribute(
+    "aria-label",
+    current === "dark" ? "Switch to light mode" : "Switch to dark mode"
+  );
+
+  themeToggle.addEventListener("click", () => {
+    const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    applyTheme(next);
+  });
+}
+
 const updated = document.getElementById("updated");
 if (updated) {
   const d = new Date(document.lastModified);

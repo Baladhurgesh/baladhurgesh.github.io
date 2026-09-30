@@ -29,7 +29,18 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e07a3c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Inter,system-ui,sans-serif' font-weight='700' font-size='38' fill='white'%3EB%3C/text%3E%3C/svg%3E" />
 
   <!-- Set .js on <html> before paint to prevent flash-of-content on scroll reveal -->
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var theme = localStorage.getItem('bala-theme');
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+      document.documentElement.classList.add('twin-welcome');
+    } catch (e) {}
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,7 +88,16 @@
         <a href="#writing">Writing</a>
         <a href="now.html">Now</a>
         <a href="#contact">Contact</a>
-        <button type="button" class="twin-nav" id="twin-open" aria-haspopup="dialog">Twin</button>
+        <button type="button" class="twin-nav" id="twin-open" aria-controls="twin-panel">Twin</button>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch color theme">
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 14.5A8.5 8.5 0 1110.2 3.2 7 7 0 0021 14.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M12 3v1.6M12 19.4V21M4.2 4.2l1.1 1.1M18.7 18.7l1.1 1.1M3 12h1.6M19.4 12H21M4.2 19.8l1.1-1.1M18.7 5.3l1.1-1.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
       </div>
     </div>
   </nav>
@@ -263,27 +283,29 @@
   </main>
   </div>
 
-  <div class="twin-overlay" id="twin-overlay" hidden aria-hidden="true">
-    <div class="twin-overlay-backdrop" aria-hidden="true"></div>
-    <div class="twin-card" role="dialog" aria-modal="true" aria-labelledby="twin-heading">
-      <button type="button" class="twin-skip" id="twin-skip">Skip to profile</button>
-
-      <div class="twin-badge">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span>AI digital twin</span>
+  <div class="twin-dock is-open" id="twin-dock">
+    <div class="twin-panel" id="twin-panel" role="dialog" aria-labelledby="twin-heading">
+      <div class="twin-panel-head">
+        <div class="twin-badge">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>AI digital twin</span>
+        </div>
+        <button type="button" class="twin-close" id="twin-close">Close</button>
       </div>
 
-      <h2 class="twin-heading" id="twin-heading">Talk to my twin before you read the résumé</h2>
-      <p class="twin-sub">Ask about Flotive, Lucid, projects, or what I'm building now.</p>
+      <h2 class="twin-heading" id="twin-heading">Talk to my twin</h2>
+      <p class="twin-sub">Tap the orb to start. Close anytime to read the site.</p>
 
       <div class="twin-voice">
         <button type="button" class="twin-orb" id="twin-orb" aria-label="Start voice conversation">
+          <span class="twin-orb-glow" aria-hidden="true"></span>
+          <span class="twin-orb-core" aria-hidden="true"></span>
           <canvas class="twin-canvas" id="twin-canvas" width="200" height="200" hidden></canvas>
           <svg class="twin-orb-icon" id="twin-orb-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M12 14a3 3 0 003-3V5a3 3 0 10-6 0v6a3 3 0 003 3zm0 0v3m-4 0h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
         </button>
-        <p class="twin-status" id="twin-status">Tap to start conversation</p>
+        <p class="twin-status" id="twin-status">Tap the orb to talk</p>
       </div>
 
       <div class="twin-prompts" aria-label="Suggested questions">
@@ -292,11 +314,7 @@
         <span class="twin-chip">What is he building now?</span>
       </div>
 
-      <div class="twin-actions">
-        <button type="button" class="twin-reveal" id="twin-reveal">Reveal profile</button>
-        <button type="button" class="twin-end" id="twin-end" hidden>End conversation</button>
-      </div>
-
+      <button type="button" class="twin-end" id="twin-end" hidden>End conversation</button>
       <p class="twin-error" id="twin-error" hidden role="alert"></p>
     </div>
   </div>

@@ -1,12 +1,11 @@
 import { Conversation } from "https://esm.sh/@elevenlabs/client@0.12.2";
 
 const TOKEN_URL = "https://bala-recruitment-twin.vercel.app/api/conversation-token";
-const STORAGE_KEY = "bala-twin-overlay-dismissed";
 
-const overlay = document.getElementById("twin-overlay");
+const dock = document.getElementById("twin-dock");
+const panel = document.getElementById("twin-panel");
 const openBtn = document.getElementById("twin-open");
-const skipBtn = document.getElementById("twin-skip");
-const revealBtn = document.getElementById("twin-reveal");
+const closeBtn = document.getElementById("twin-close");
 const endBtn = document.getElementById("twin-end");
 const orbBtn = document.getElementById("twin-orb");
 const canvas = document.getElementById("twin-canvas");
@@ -14,7 +13,7 @@ const orbIcon = document.getElementById("twin-orb-icon");
 const statusEl = document.getElementById("twin-status");
 const errorEl = document.getElementById("twin-error");
 
-if (overlay && orbBtn) {
+if (dock && panel && orbBtn) {
   let conversation = null;
   let status = "idle";
   let animationId = null;
@@ -37,7 +36,7 @@ if (overlay && orbBtn) {
     status = next;
     if (!statusEl) return;
 
-    if (status === "idle") statusEl.textContent = "Tap to start conversation";
+    if (status === "idle") statusEl.textContent = "Tap the orb to talk";
     else if (status === "connecting") statusEl.textContent = "Connecting…";
     else if (status === "connected") {
       statusEl.textContent = isSpeaking ? "Bala is speaking…" : "Listening…";
@@ -54,14 +53,16 @@ if (overlay && orbBtn) {
     canvas.hidden = !connected;
   }
 
-  function openOverlay() {
-    overlay.hidden = false;
-    overlay.setAttribute("aria-hidden", "false");
-    document.body.classList.add("twin-locked");
-    revealBtn?.focus();
+  function openPanel() {
+    document.documentElement.classList.remove("twin-dismissed");
+    document.documentElement.classList.add("twin-welcome");
+    panel.hidden = false;
+    dock.classList.add("is-open");
+    document.body.classList.add("twin-open");
+    orbBtn.focus();
   }
 
-  async function closeOverlay(persist = true) {
+  async function closePanel() {
     if (conversation) {
       try {
         await conversation.endSession();
@@ -72,20 +73,13 @@ if (overlay && orbBtn) {
       stopVisualizer();
     }
 
-    overlay.hidden = true;
-    overlay.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("twin-locked");
+    panel.hidden = true;
+    dock.classList.remove("is-open");
+    document.body.classList.remove("twin-open");
+    document.documentElement.classList.remove("twin-welcome");
+    document.documentElement.classList.add("twin-dismissed");
     setStatus("idle");
     setError(null);
-
-    if (persist) {
-      try {
-        localStorage.setItem(STORAGE_KEY, "1");
-      } catch {
-        // private browsing
-      }
-    }
-
     openBtn?.focus();
   }
 
@@ -221,23 +215,13 @@ if (overlay && orbBtn) {
   });
 
   endBtn?.addEventListener("click", endConversation);
-  skipBtn?.addEventListener("click", () => closeOverlay(true));
-  revealBtn?.addEventListener("click", () => closeOverlay(true));
-  openBtn?.addEventListener("click", () => openOverlay());
+  openBtn?.addEventListener("click", openPanel);
+  closeBtn?.addEventListener("click", closePanel);
 
   document.addEventListener("keydown", (e) => {
-    if (overlay.hidden) return;
-    if (e.key === "Escape") closeOverlay(true);
+    if (panel.hidden) return;
+    if (e.key === "Escape") closePanel();
   });
 
-  let dismissed = false;
-  try {
-    dismissed = localStorage.getItem(STORAGE_KEY) === "1";
-  } catch {
-    dismissed = false;
-  }
-
-  if (!dismissed) {
-    openOverlay();
-  }
+  openPanel();
 }
