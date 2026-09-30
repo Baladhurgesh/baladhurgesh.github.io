@@ -380,7 +380,7 @@ details:not([open]) > :not(summary) { display: none; }
 .r-wins {
   list-style: none;
   padding: 0;
-  margin: 6px 0 0;
+  margin: 6px 0 22px;
 }
 .r-wins li {
   padding: 6px 0;
@@ -754,9 +754,9 @@ body.twin-open .topbar {
   position: relative;
   display: grid;
   place-items: center;
-  width: 132px;
-  height: 132px;
-  flex: 0 0 132px;
+  width: 108px;
+  height: 108px;
+  flex: 0 0 108px;
   isolation: isolate;
   border: none;
   border-radius: 999px;
@@ -807,9 +807,11 @@ body.twin-open .topbar {
 
 .twin-canvas {
   display: block;
-  width: 132px;
-  height: 132px;
+  width: 108px;
+  height: 108px;
 }
+.twin-panel.is-live .twin-sub,
+.twin-panel.is-live .twin-prompts { display: none; }
 .twin-orb-icon {
   width: 34px;
   height: 34px;

@@ -44,6 +44,7 @@ if (dock && panel && orbBtn) {
 
     orbBtn.disabled = status === "connecting";
     endBtn.hidden = status !== "connected";
+    panel.classList.toggle("is-live", status === "connecting" || status === "connected");
 
     const connected = status === "connected";
     orbBtn.classList.toggle("is-connected", connected);
