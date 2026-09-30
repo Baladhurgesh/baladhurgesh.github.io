@@ -64,6 +64,7 @@
       "https://www.linkedin.com/in/baladhurgesh/",
       "https://github.com/baladhurgesh",
       "https://x.com/baladhurgesh97",
+      "https://www.youtube.com/@bala7653",
       "https://medium.com/@baladhurgesh",
       "https://devpost.com/baladhurgesh97/"
     ],
@@ -155,13 +156,23 @@
       <h2>Selected work</h2>
       <ul class="rows">
         <li>
-          <div class="r-head">
-            <span class="r-title">StrategyBench</span>
-            <span class="r-meta mono">Live benchmark · Eternis · 2025</span>
-          </div>
-          <p>
-            Public leaderboard evaluating frontier LLMs across 1,000+ multi-agent social-deduction games. Normalized deception and detection scoring. Released RL environments so other labs can reproduce and extend.
-          </p>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">StrategyBench</span>
+                <span class="r-meta mono">Live benchmark · Eternis · 2025</span>
+              </div>
+              <p>
+                Public leaderboard evaluating frontier LLMs across 1,000+ multi-agent social-deduction games. Normalized deception and detection scoring. Released RL environments so other labs can reproduce and extend.
+              </p>
+            </summary>
+            <ul class="more">
+              <li>Built the site and ran the experiments: 6 environments, 9 models, 1,000+ simulated games.</li>
+              <li>Deception Index covers evil, spy, and impostor roles. Detection Index covers good, villager, and crewmate roles.</li>
+              <li>Cross-game ranking uses normalized ELO so models can be compared across Avalon, Secret Hitler, Werewolf, Spyfall, and Among Us.</li>
+              <li>Game pages explain why a model ranks where it does, not only the final score.</li>
+            </ul>
+          </details>
           <p class="r-links">
             <a href="https://strategy.freysa.ai/" target="_blank" rel="noreferrer">Website</a>
             <a href="https://github.com/EternisAI/strategy-bench" target="_blank" rel="noreferrer">GitHub</a>
@@ -169,23 +180,84 @@
         </li>
 
         <li>
-          <div class="r-head">
-            <span class="r-title">LAVA at Lucid Motors</span>
-            <span class="r-meta mono">Production · 2022 / 2025</span>
-          </div>
-          <p>
-            CLIP and pgvector similarity search over multi-billion-frame fleet datasets. 5x faster visual retrieval, adopted across the autonomy org. Powered the Lucid Dream Data Engine, which prioritizes high-value driving scenarios to accelerate AV retraining.
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">Lucid Dream Data Engine</span>
+                <span class="r-meta mono">Production · Lucid · 2022 / 2025</span>
+              </div>
+              <p>
+                Fleet scenario mining, auto-annotation, and LAVA similarity search. About 6B embeddings indexed, about 5x faster retrieval, and about 70% lower annotation cost.
+              </p>
+            </summary>
+            <ul class="more">
+              <li>Uncertainty sampling from model probabilities, plus heuristics such as pedestrian confidence under 50% within 50 meters.</li>
+              <li>Trained BEVFusion on in-house camera and LiDAR data and fed those labels into human review.</li>
+              <li>LAVA does image-to-image and text-to-image search with metadata filters for date, vehicle, and location.</li>
+              <li>Also built a scalable 3D object-detection auto-annotation pipeline adopted across the autonomy org.</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">PII anonymization</span>
+                <span class="r-meta mono">RL finetune · Eternis · 2025</span>
+              </div>
+              <p>
+                Small local models that replace PII without rewriting the sentence. Trained Qwen3 with SFT, then DPO, then GRPO against an LLM judge.
+              </p>
+            </summary>
+            <ul class="more">
+              <li>The model emits a tool call, <span class="mono">replace_entities</span>, and leaves public figures untouched.</li>
+              <li>Judge scores format, PII detection, granularity, replacement quality, and category rules, from 0 to 10.</li>
+              <li>About 30k samples. Qwen3-4B reached 9.55/10. Qwen3-1.7B reached 9.20/10.</li>
+              <li>Quantization, KV cache, and speculative decoding: time to first token under 250ms on the 1.7B and 4B models.</li>
+            </ul>
+          </details>
+          <p class="r-links">
+            <a href="https://huggingface.co/collections/eternisai/anonymizer-model-series" target="_blank" rel="noreferrer">Hugging Face</a>
+            <a href="https://bit.ly/4pXWNk9" target="_blank" rel="noreferrer">Write-up</a>
           </p>
         </li>
 
         <li>
-          <div class="r-head">
-            <span class="r-title">Personal Twin</span>
-            <span class="r-meta mono">Voice agent · 2026</span>
-          </div>
-          <p>
-            Turn a resume and GitHub into a conversational AI twin that explains skills and summarizes projects in your voice. Built with Next.js, ElevenLabs, and a structured knowledge base.
-          </p>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">PruneWise</span>
+                <span class="r-meta mono">MoE pruning · 2024</span>
+              </div>
+              <p>
+                Profiled expert routing in a mixture-of-experts LLM and pruned underused experts, especially in early layers, without hurting output quality.
+              </p>
+            </summary>
+            <ul class="more">
+              <li>Built token-load heatmaps, then ranked experts by load and importance.</li>
+              <li>Subclassed the MoE block so the forward pass routes only to kept experts, including the shared expert.</li>
+              <li>Outputs stayed fluent, and Hindi and Chinese behavior stayed consistent after pruning.</li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">Personal Twin</span>
+                <span class="r-meta mono">Voice agent · 2026</span>
+              </div>
+              <p>
+                Turn a resume and GitHub into a conversational AI twin that explains skills and summarizes projects in your voice. Built with Next.js, ElevenLabs, and a structured knowledge base.
+              </p>
+            </summary>
+            <ul class="more">
+              <li>Private voice sessions: the site requests a short-lived token so the ElevenLabs key never ships to the browser.</li>
+              <li>Knowledge base is project one-pagers: role, metrics, and what to hand off when a detail is missing.</li>
+            </ul>
+          </details>
           <p class="r-links">
             <a href="https://devpost.com/baladhurgesh97/" target="_blank" rel="noreferrer">Devpost</a>
             <a href="https://medium.com/@baladhurgesh/building-my-digital-twin-how-i-created-an-ai-voice-agent-5b2c727ff9eb" target="_blank" rel="noreferrer">Write-up</a>
@@ -193,17 +265,22 @@
         </li>
 
         <li>
-          <div class="r-head">
-            <span class="r-title">PII Anonymization (Qwen3)</span>
-            <span class="r-meta mono">Finetune · Eternis · 2025</span>
-          </div>
-          <p>
-            Fine-tuned Qwen3 to redact and replace PII while preserving meaning. Production-ready model series shipped on Hugging Face.
-          </p>
-          <p class="r-links">
-            <a href="https://huggingface.co/collections/eternisai/anonymizer-model-series" target="_blank" rel="noreferrer">Hugging Face</a>
-            <a href="https://bit.ly/4pXWNk9" target="_blank" rel="noreferrer">Write-up</a>
-          </p>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">SemSeg and monocular depth</span>
+                <span class="r-meta mono">WPI · 2019 / 2021</span>
+              </div>
+              <p>
+                Scene understanding for autonomous driving: SegNet ablations on Cityscapes, and unsupervised monocular depth on KITTI.
+              </p>
+            </summary>
+            <ul class="more">
+              <li>SegNet global class accuracy: baseline 82.27%, stride-2 convolution 63.55%, skip connections 86.1%.</li>
+              <li>Skip connections kept fine detail from the encoder. Replacing max-pool with stride convolution lost it.</li>
+              <li>Depth model trains on 29,000 unlabeled KITTI stereo pairs with photometric, smoothness, left-right, and temporal losses. Inference about 16ms per frame.</li>
+            </ul>
+          </details>
         </li>
 
         <li>
@@ -221,17 +298,62 @@
         </li>
       </ul>
       <p class="footnote">
-        More projects (PruneWise, Plot-LLaMa Data Gen, MathMatrixMovies, Verdictron) on <a href="https://github.com/baladhurgesh" target="_blank" rel="noreferrer">GitHub</a> and <a href="https://devpost.com/baladhurgesh97/" target="_blank" rel="noreferrer">Devpost</a>.
+        More projects (Plot-LLaMa Data Gen, MathMatrixMovies, Verdictron) on <a href="https://github.com/baladhurgesh" target="_blank" rel="noreferrer">GitHub</a> and <a href="https://devpost.com/baladhurgesh97/" target="_blank" rel="noreferrer">Devpost</a>.
       </p>
     </section>
 
     <section id="background" class="section">
       <h2>Background</h2>
       <ul class="entries">
-        <li><span>Research Engineer, Eternis Labs</span><span class="mono">2025 / 2026</span></li>
-        <li><span>ML Engineer, Lucid Motors</span><span class="mono">2022 / 2025</span></li>
-        <li><span>CV / DL Engineer, Shipin Systems</span><span class="mono">2021 / 2022</span></li>
-        <li><span>Deep Learning Intern, Blue River Technology</span><span class="mono">2020</span></li>
+        <li>
+          <details class="role">
+            <summary><span>Founding Engineer, Flotive AI</span><span class="mono">2026</span></summary>
+            <ul class="more">
+              <li>Built a regulatory intelligence platform that turns filings into a graph for agent retrieval and reasoning.</li>
+              <li>Shipped an engine that decides permit applicability, so review is faster and less manual.</li>
+              <li>Launched sentiment intelligence to track public perception around energy projects.</li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details class="role">
+            <summary><span>Research Engineer, Eternis Labs</span><span class="mono">2025 / 2026</span></summary>
+            <ul class="more">
+              <li>Fine-tuned Qwen3 to redact and replace PII, then pushed quality with DPO and GRPO.</li>
+              <li>Built StrategyBench: website, experiments, and a public leaderboard for multi-agent games.</li>
+              <li>Built a Gmail drafting agent with long-term memory and a relationship graph for context-aware replies.</li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details class="role">
+            <summary><span>ML Engineer, Lucid Motors</span><span class="mono">2022 / 2025</span></summary>
+            <ul class="more">
+              <li>Designed LAVA, similarity search over multi-billion-frame fleet data, about 5x faster retrieval.</li>
+              <li>Built a camera and LiDAR auto-annotation pipeline that cut labeling cost by about 70%.</li>
+              <li>Mentored uncertainty sampling and scenario heuristics for the Lucid Dream Data Engine.</li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details class="role">
+            <summary><span>CV / DL Engineer, Shipin Systems</span><span class="mono">2021 / 2022</span></summary>
+            <ul class="more">
+              <li>Built an end-to-end ML pipeline for ingestion, labeling, training, and inference.</li>
+              <li>Cut iteration cycles by about 50%.</li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details class="role">
+            <summary><span>Deep Learning Intern, Blue River Technology</span><span class="mono">2020</span></summary>
+            <ul class="more">
+              <li>Multi-camera segmentation with a shared encoder, about 40% faster inference.</li>
+              <li>Active learning for labeling: ensemble uncertainty beat autoencoder novelty. Annotation cost down about 60%.</li>
+              <li>Setup was 5k baseline images, a 10k pool, and the next 2k chosen for retraining.</li>
+            </ul>
+          </details>
+        </li>
         <li><span>MS Robotics, Worcester Polytechnic Institute</span><span class="mono">2019 / 2021</span></li>
         <li><span>B.Tech, NIT Trichy</span><span class="mono">2014 / 2018</span></li>
       </ul>
@@ -269,6 +391,7 @@
         <li><a href="https://www.linkedin.com/in/baladhurgesh/" target="_blank" rel="noreferrer">LinkedIn</a><span class="mono">/in/baladhurgesh</span></li>
         <li><a href="https://github.com/baladhurgesh" target="_blank" rel="noreferrer">GitHub</a><span class="mono">@baladhurgesh</span></li>
         <li><a href="https://x.com/baladhurgesh97" target="_blank" rel="noreferrer">X</a><span class="mono">@baladhurgesh97</span></li>
+        <li><a href="https://www.youtube.com/@bala7653" target="_blank" rel="noreferrer">YouTube</a><span class="mono">@bala7653</span></li>
         <li><a href="https://medium.com/@baladhurgesh" target="_blank" rel="noreferrer">Medium</a><span class="mono">@baladhurgesh</span></li>
         <li><a href="https://devpost.com/baladhurgesh97/" target="_blank" rel="noreferrer">Devpost</a><span class="mono">baladhurgesh97</span></li>
       </ul>
