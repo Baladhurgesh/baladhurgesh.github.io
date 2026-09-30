@@ -85,6 +85,7 @@
       <div class="topbar-links">
         <a href="#building">Building</a>
         <a href="#work">Work</a>
+        <a href="#hackathons">Hackathons</a>
         <a href="#background">Background</a>
         <a href="#writing">Writing</a>
         <a href="now.html">Now</a>
@@ -283,23 +284,193 @@
           </details>
         </li>
 
-        <li>
-          <div class="r-head">
-            <span class="r-title">Hackathon wins</span>
-            <span class="r-meta mono">5x · 2023 / 2025</span>
-          </div>
-          <ul class="r-wins">
-            <li><strong>3rd Place</strong>, CUDA GPU Mode IRL Hackathon. <span class="mono">Nov 2025</span></li>
-            <li><strong>Most Ready to Ship</strong>, Pear VC × Anthropic. Ply, an AI extension that autocompletes forms from your context. <span class="mono">Mar 2025</span></li>
-            <li><strong>Audience Choice</strong>, SPC × OpenAI. Model Colosseum, an adversarial LLM robustness and jailbreak eval framework. <span class="mono">Mar 2024</span></li>
-            <li><strong>Edge Award</strong>, Samsung Next GenAI. FlowCoach AI, a real-time fitness coach with pose-based audio feedback. <span class="mono">2023</span></li>
-            <li><strong>1st Place</strong>, Scale AI GenAI Hackathon. YOBO, prompt to UML to full code repo automation. <span class="mono">2023</span></li>
-          </ul>
-        </li>
       </ul>
       <p class="footnote">
-        More projects (Plot-LLaMa Data Gen, MathMatrixMovies, Verdictron) on <a href="https://github.com/baladhurgesh" target="_blank" rel="noreferrer">GitHub</a> and <a href="https://devpost.com/baladhurgesh97/" target="_blank" rel="noreferrer">Devpost</a>.
+        More on <a href="https://github.com/baladhurgesh" target="_blank" rel="noreferrer">GitHub</a> and <a href="https://devpost.com/baladhurgesh97/" target="_blank" rel="noreferrer">Devpost</a>.
       </p>
+    </section>
+
+    <section id="hackathons" class="section">
+      <h2>Hackathons</h2>
+      <p class="sub">Prototypes from hackathons. Built to test an idea, not shipped as production systems.</p>
+      <ul class="rows">
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">Kernel-Forge</span>
+                <span class="r-meta mono">2026</span>
+              </div>
+              <p>An agent that profiles an LLM workload, writes Triton kernels, and keeps a kernel only when it is correct and measurably faster.</p>
+            </summary>
+            <ul class="more">
+              <li>The loop is profile, find the expensive op, generate a kernel, compile, test correctness, benchmark, then try again.</li>
+              <li>On one Qwen run on DGX Spark, throughput moved from about 205 to 220 tokens per second.</li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">CatchUp</span>
+                <span class="r-meta mono">2026</span>
+              </div>
+              <p>Drop a YouTube link in Slack and get a short two-host podcast back.</p>
+            </summary>
+            <ul class="more">
+              <li>Pulls the transcript, keeps the parts you asked about, writes a dialogue, synthesizes the audio, and posts the MP3.</li>
+              <li>Can also save notes to Google Drive and Notion.</li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">Self-improving kernel agent</span>
+                <span class="r-meta mono">Cerebral Valley · 2026</span>
+              </div>
+              <p>Can a model improve a GPU kernel when it can compile it, test it, and read the profiler?</p>
+            </summary>
+            <ul class="more">
+              <li>The reward is measurement: whether it compiles, whether it is correct, and what the latency, throughput, and profiler say.</li>
+              <li>Feedback is from the run, not from another paragraph of advice.</li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <div class="r-head">
+            <span class="r-title">Context-parallel Gated DeltaNet</span>
+            <span class="r-meta mono">3rd place · GPU MODE IRL · Nov 2025</span>
+          </div>
+          <p>Shards tokens across GPUs so sequence length can grow without running out of memory.</p>
+        </li>
+        <li>
+          <div class="r-head">
+            <span class="r-title">Ply</span>
+            <span class="r-meta mono">Most Ready to Ship · Pear VC × Anthropic · Mar 2025</span>
+          </div>
+          <p>An extension that fills in forms from your context.</p>
+        </li>
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">Insightium</span>
+                <span class="r-meta mono">Education</span>
+              </div>
+              <p>Reads a student’s test, finds the weak concepts, and writes feedback, study material, and follow-up questions.</p>
+            </summary>
+            <ul class="more">
+              <li>The loop is assessment, diagnosis, personalized material, then more questions.</li>
+              <li>Works from the answer sheet itself, including handwritten pages, instead of stopping at a score.</li>
+            </ul>
+          </details>
+          <p class="r-links"><a href="https://devpost.com/software/insightium" target="_blank" rel="noreferrer">Devpost</a></p>
+        </li>
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">Verdictron</span>
+                <span class="r-meta mono">Product research</span>
+              </div>
+              <p>Start from a product or a screenshot, then ask a specific question grounded in reviews, the web, and YouTube.</p>
+            </summary>
+            <ul class="more">
+              <li>Identifies the product, gathers reviews and transcripts, stores them for search, and answers from that material.</li>
+              <li>Retrieval is the relevant passage, not the whole video.</li>
+              <li>Sponsor awards from Deep Lake / ActiveLoop, HappyRobot, and SambaNova.</li>
+            </ul>
+          </details>
+          <p class="r-links"><a href="https://devpost.com/software/verdictron" target="_blank" rel="noreferrer">Devpost</a></p>
+        </li>
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">DataGen</span>
+                <span class="r-meta mono">Synthetic data</span>
+              </div>
+              <p>A larger model writes examples for a task, a verifier throws out the bad ones, and a smaller model trains on what is left.</p>
+            </summary>
+            <ul class="more">
+              <li>Generation alone is not the pipeline. It also checks, filters, and evaluates before the next round of examples.</li>
+            </ul>
+          </details>
+          <p class="r-links"><a href="https://devpost.com/software/datagen" target="_blank" rel="noreferrer">Devpost</a></p>
+        </li>
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">MathMatrixMovies</span>
+                <span class="r-meta mono">Math explainers</span>
+              </div>
+              <p>Writes Manim code for a math explainer at a chosen level and language, runs it, and repairs the code when the render fails.</p>
+            </summary>
+            <ul class="more">
+              <li>The loop is generate, execute, read the failure, repair, and run again.</li>
+              <li>The failed and fixed programs are pairs that could train a smaller model for animation code.</li>
+            </ul>
+          </details>
+          <p class="r-links"><a href="https://devpost.com/software/mathmatrixmovies" target="_blank" rel="noreferrer">Devpost</a></p>
+        </li>
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">ThirdEye</span>
+                <span class="r-meta mono">Accessibility</span>
+              </div>
+              <p>A smart-glasses prototype: a camera reads the scene, and speech tells a visually impaired user what is there.</p>
+            </summary>
+            <ul class="more">
+              <li>They can also ask a question out loud and get a spoken answer.</li>
+              <li>Camera, vision, speech-to-text, reasoning, then text-to-speech.</li>
+            </ul>
+          </details>
+          <p class="r-links"><a href="https://devpost.com/software/thirdeye-30r7z1" target="_blank" rel="noreferrer">Devpost</a></p>
+        </li>
+        <li>
+          <details>
+            <summary>
+              <div class="r-head">
+                <span class="r-title">ImageInn</span>
+                <span class="r-meta mono">Recommendations</span>
+              </div>
+              <p>Treats a photo gallery as a preference signal and suggests nearby restaurants that match the food and places in those photos.</p>
+            </summary>
+            <ul class="more">
+              <li>CLIP embeddings and vector search, instead of asking someone to fill out a taste profile.</li>
+              <li>Galleries are private, so what the system is allowed to see is part of the product.</li>
+            </ul>
+          </details>
+          <p class="r-links"><a href="https://devpost.com/software/imageinn" target="_blank" rel="noreferrer">Devpost</a></p>
+        </li>
+        <li>
+          <div class="r-head">
+            <span class="r-title">Model Colosseum</span>
+            <span class="r-meta mono">Audience Choice · SPC × OpenAI · Mar 2024</span>
+          </div>
+          <p>Watches jailbreak discussions, turns them into adversarial prompts, and scores whether a model holds up.</p>
+        </li>
+        <li>
+          <div class="r-head">
+            <span class="r-title">FlowCoach AI</span>
+            <span class="r-meta mono">Edge Award · Samsung Next GenAI · 2023</span>
+          </div>
+          <p>Pose estimation and a language model give live audio cues during a workout, aimed at injury prevention.</p>
+        </li>
+        <li>
+          <div class="r-head">
+            <span class="r-title">YOBO</span>
+            <span class="r-meta mono">1st place · Scale AI GenAI · 2023</span>
+          </div>
+          <p>A prompt becomes a UML diagram, then a code repository.</p>
+        </li>
+      </ul>
     </section>
 
     <section id="background" class="section">

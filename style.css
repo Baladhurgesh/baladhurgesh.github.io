@@ -277,6 +277,7 @@ html[data-theme="light"] .topbar { background: rgba(246, 239, 230, 0.9); }
   margin: 56px 0;
   scroll-margin-top: 72px;
 }
+.section h2 + .sub { margin: -8px 0 18px; }
 .section h2 {
   margin: 0 0 20px;
   font-size: 12px;
