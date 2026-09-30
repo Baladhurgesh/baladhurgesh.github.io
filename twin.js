@@ -80,6 +80,8 @@ if (dock && panel && orbBtn) {
     document.documentElement.classList.add("twin-dismissed");
     setStatus("idle");
     setError(null);
+    const calendly = document.querySelector("#twin-calendly");
+    if (calendly) calendly.hidden = true;
     openBtn?.focus();
   }
 
@@ -174,6 +176,13 @@ if (dock && panel && orbBtn) {
       conversation = await Conversation.startSession({
         conversationToken,
         connectionType: "webrtc",
+        clientTools: {
+          offer_calendly: async () => {
+            const link = document.querySelector("#twin-calendly");
+            if (link) link.hidden = false;
+            return "Showed the 30-minute Calendly link on screen: https://calendly.com/baladhurgeshbp/30min";
+          },
+        },
         onConnect: () => {
           setStatus("connected");
           startVisualizer();
