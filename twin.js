@@ -1,6 +1,8 @@
 import { Conversation } from "https://esm.sh/@elevenlabs/client@0.12.2";
 
-const TOKEN_URL = "https://bala-recruitment-twin.vercel.app/api/conversation-token";
+const API_BASE = "https://bala-recruitment-twin.vercel.app";
+const TOKEN_URL = `${API_BASE}/api/conversation-token`;
+const MESSAGE_URL = `${API_BASE}/api/leave-message`;
 
 const dock = document.getElementById("twin-dock");
 const panel = document.getElementById("twin-panel");
@@ -182,6 +184,29 @@ if (dock && panel && orbBtn) {
             const link = document.querySelector("#twin-calendly");
             if (link) link.hidden = false;
             return "Showed the 30-minute Calendly link on screen: https://calendly.com/baladhurgeshbp/30min";
+          },
+          leave_message: async (args) => {
+            const str = (value) => (typeof value === "string" ? value.trim() : "");
+            const name = str(args?.name);
+            const contact = str(args?.contact);
+            const message = str(args?.message);
+            if (!message) {
+              return "No message was provided yet. Ask the visitor what they'd like to tell Bala, then call leave_message again.";
+            }
+
+            try {
+              const response = await fetch(MESSAGE_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, contact, message }),
+                signal: AbortSignal.timeout(10000),
+              });
+              if (!response.ok) throw new Error(`leave-message ${response.status}`);
+              return "Message emailed to Bala. Confirm to the visitor that it was sent.";
+            } catch (error) {
+              console.error(error);
+              return "The message could not be sent. Apologize and suggest emailing baladhurgeshbp@gmail.com directly.";
+            }
           },
         },
         onConnect: () => {

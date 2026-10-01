@@ -690,22 +690,25 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .twin-close {
   appearance: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
   border: none;
+  border-radius: 999px;
   background: none;
   padding: 0;
   font: inherit;
-  font-size: 12px;
+  font-size: 22px;
+  line-height: 1;
   color: var(--dim);
-  text-decoration: underline;
-  text-underline-offset: 3px;
   cursor: pointer;
 }
-.twin-close:hover { color: var(--text); }
+.twin-close:hover { color: var(--text); background: var(--accent-soft); }
 .twin-close:focus { outline: none; }
 .twin-close:focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 2px;
+  outline-offset: 2px;
 }
 
 .twin-heading {
@@ -754,9 +757,9 @@ body.twin-open .topbar {
   position: relative;
   display: grid;
   place-items: center;
-  width: 108px;
-  height: 108px;
-  flex: 0 0 108px;
+  width: 132px;
+  height: 132px;
+  flex: 0 0 132px;
   isolation: isolate;
   border: none;
   border-radius: 999px;
@@ -803,7 +806,7 @@ body.twin-open .topbar {
     radial-gradient(circle at 50% 55%, #f0a06a 0 50%, #c25a28 100%);
 }
 .twin-orb.is-connected .twin-orb-glow,
-.twin-orb.is-connected .twin-orb-core { opacity: 0; }
+.twin-orb.is-connected .twin-orb-core { animation: none; opacity: 0; }
 
 .twin-canvas {
   display: block;
